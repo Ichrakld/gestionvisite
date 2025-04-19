@@ -1,0 +1,106 @@
+/* Container principal pour les détails de la visite */
+.visit-details {
+    font-family: 'Arial', sans-serif;
+    margin: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Titre de la visite */
+  .visit-details h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  /* Description de la visite */
+  .visit-details p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  /* Galerie d'images */
+  .gallery {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  
+  .gallery img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .gallery img:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Section carte Google Maps */
+  .map-container {
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .map-container iframe {
+    width: 100%;
+    height: 300px;
+    border: none;
+  }
+  
+  /* Bouton de réservation */
+  .btn-reserver {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+  
+  .btn-reserver:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Section recommandations */
+  .recommandations {
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+  }
+  
+  .recommandations h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  .recommandations ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .recommandations li {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 8px;
+    transition: color 0.3s ease;
+  }
+  
+  .recommandations li:hover {
+    color: #007bff;
+  }
+  

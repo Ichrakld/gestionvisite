@@ -1,0 +1,91 @@
+/* Style de la navbar */
+.navbar {
+    background-color: #bebcbc;
+    padding: 10px 20px;
+  }
+  
+  .navbar-container {
+    display: flex;
+    justify-content: center; /* Centrer le logo et les éléments */
+    align-items: center;
+  }
+  
+  .navbar-logo-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .navbar-logo {
+    width: 50px; /* Ajuste la taille du logo */
+    height: auto;
+    margin-right: 20px;
+  }
+  
+  .navbar-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar-item {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 1rem;
+    padding: 10px;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-item:hover {
+    color: #ff6f61; /* Couleur du texte lors du survol */
+  }
+  
+  /* Modal */
+  .modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 800px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Ombre pour le modal */
+  }
+  
+  /* Overlay */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Fond sombre derrière le modal */
+    z-index: 1000;
+  }
+  
+  /* Bouton de fermeture */
+  .close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .modal {
+      width: 90%;
+    }
+  }
+  
