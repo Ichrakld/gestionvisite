@@ -1,52 +1,53 @@
-import React, { createContext, useContext, useState } from 'react';
-
-// Mock DB pour l'exemple (dans la vraie app, utiliser un backend)
-const initialUsers = [
-  { username: 'admin1', password: 'pass123', role: 'admin' },
-  { username: 'guide1', password: 'pass123', role: 'guide' },
-  { username: 'agency1', password: 'pass123', role: 'agence' }
-];
+// src/context/AuthContext.jsx
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [users, setUsers] = useState(initialUsers);
+  // On conserve les users dans localStorage pour simuler une DB
+  const [users, setUsers] = useState(() => {
+    const stored = localStorage.getItem('users');
+    return stored
+      ? JSON.parse(stored)
+      : [
+          { email: 'admin@site.com', password: 'pass123', role: 'admin' },
+          { email: 'guide1@site.com', password: 'pass123', role: 'guide' },
+          { email: 'agency1@site.com', password: 'pass123', role: 'agence' }
+        ];
+  });
+
   const [user, setUser] = useState(null);
-  const [error, setError] = useState(null);
 
-  const signUp = (username, password) => {
-    if (users.find(u => u.username === username)) {
-      throw new Error('Ce nom d’utilisateur existe déjà.');
+  useEffect(() => {
+    localStorage.setItem('users', JSON.stringify(users));
+  }, [users]);
+
+  // Inscription
+  const signUp = (email, password) => {
+    if (users.find(u => u.email === email)) {
+      throw new Error('Cette adresse e-mail est déjà utilisée.');
     }
-    const newUser = { username, password, role: 'touriste' };
-    setUsers([...users, newUser]);
+    const newUser = { email, password, role: 'touriste' };
+    setUsers(prev => [...prev, newUser]);
     setUser(newUser);
-    setError(null);
   };
 
-  const login = (username, password) => {
-    const found = users.find(u => u.username === username && u.password === password);
-    if (found) {
-      setUser(found);
-      setError(null);
-      return;
+  // Connexion
+  const login = (email, password) => {
+    const found = users.find(u => u.email === email && u.password === password);
+    if (!found) {
+      throw new Error('E-mail ou mot de passe incorrect.');
     }
-    throw new Error('Nom d’utilisateur ou mot de passe incorrect.');
+    setUser(found);
   };
 
-  const logout = () => {
-    setUser(null);
-    setError(null);
-  };
+  const logout = () => setUser(null);
 
   return (
-    <AuthContext.Provider value={{ user, error, login, logout, signUp }}>
+    <AuthContext.Provider value={{ user, login, signUp, logout }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
 export const useAuth = () => useContext(AuthContext);
-
-
-

@@ -30,7 +30,7 @@ const Navbar = () => {
           <li><Link to="/excursions" className="navbar-item">Excursion</Link></li>
           <li><Link to="/Packages" className="navbar-item">Packages</Link></li>
           <li><Link to="/" className="navbar-item">Transferts</Link></li>
-          <li><Link to="/" className="navbar-item">Contact</Link></li>
+          <li><Link to="/Contact" className="navbar-item">Contact</Link></li>
 
           {/* Affichage du rôle et bouton de connexion/déconnexion */}
           {user ? (
@@ -41,7 +41,7 @@ const Navbar = () => {
           ) : (
             <>
               <li><Link to="/login" className="navbar-item">Se connecter</Link></li>
-              <li><Link to="/signup" className="navbar-item">Inscription</Link></li>
+              <li><Link to="/Subscribe" className="navbar-item">Inscription</Link></li>
             </>
           )}
         </ul>

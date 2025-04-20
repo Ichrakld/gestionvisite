@@ -6,47 +6,62 @@ import './Login.css';
 const Login = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
-  const [credentials, setCredentials] = useState({ username: '', password: '' });
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
+  const [submitted, setSubmitted] = useState(false);
 
-  const handleChange = e => setCredentials({ ...credentials, [e.target.name]: e.target.value });
-
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await login(credentials.username, credentials.password);
-      navigate('/visites');
+      await login(email, password);
+      setSubmitted(true);
+      navigate('/visites'); // ou la page que tu veux
     } catch (err) {
-      setError(err.message);
+      setError('Invalid email or password');
     }
   };
 
   return (
     <div className="login-container">
-      <h2>Connexion</h2>
+      <h2>Sign In</h2>
+      <p>Access your account to view bookings or manage your wishlist.</p>
+
       <form onSubmit={handleSubmit} className="login-form">
         {error && <p className="error-msg">{error}</p>}
-        <input
-          type="text"
-          name="username"
-          placeholder="Nom d'utilisateur"
-          value={credentials.username}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Mot de passe"
-          value={credentials.password}
-          onChange={handleChange}
-          required
-        />
-        <button type="submit">Se connecter</button>
+
+        <label>
+          E-mail
+          <input
+            type="email"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter your email"
+          />
+        </label>
+
+        <label>
+          Password
+          <input
+            type="password"
+            required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter your password"
+          />
+        </label>
+
+        <button type="submit">Login</button>
+
+        {submitted && <p className="login-success">✅ Login successful!</p>}
       </form>
-      <p>
-        Pas encore de compte ? <Link to="/signup">Inscrivez-vous</Link>
-      </p>
+
+      <div className="login-extra">
+        <p>Don't have an account? <Link to="/subscribe">Create one here</Link>.</p>
+        <p><Link to="/forgot-password">Forgot your password?</Link></p>
+      </div>
     </div>
   );
 };
