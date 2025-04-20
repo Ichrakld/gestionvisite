@@ -1,106 +1,185 @@
 /* Container principal pour les détails de la visite */
+v/* Container principal */
 .visit-details {
-    font-family: 'Arial', sans-serif;
-    margin: 20px;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Titre de la visite */
-  .visit-details h2 {
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  /* Description de la visite */
-  .visit-details p {
-    font-size: 1.1rem;
-    color: #555;
-    line-height: 1.6;
-    margin-bottom: 20px;
-  }
-  
-  /* Galerie d'images */
-  .gallery {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-  }
-  
-  .gallery img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .gallery img:hover {
-    transform: scale(1.05);
-  }
-  
-  /* Section carte Google Maps */
-  .map-container {
-    margin-bottom: 20px;
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  
-  .map-container iframe {
-    width: 100%;
-    height: 300px;
-    border: none;
-  }
-  
-  /* Bouton de réservation */
-  .btn-reserver {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    display: inline-block;
-    margin-bottom: 20px;
-  }
-  
-  .btn-reserver:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Section recommandations */
-  .recommandations {
-    background-color: #f1f1f1;
-    padding: 20px;
-    border-radius: 8px;
-    margin-top: 20px;
-  }
-  
-  .recommandations h3 {
-    font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 15px;
-  }
-  
-  .recommandations ul {
-    list-style-type: none;
-    padding-left: 0;
-  }
-  
-  .recommandations li {
-    font-size: 1.1rem;
-    color: #555;
-    margin-bottom: 8px;
-    transition: color 0.3s ease;
-  }
-  
-  .recommandations li:hover {
-    color: #007bff;
-  }
-  
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Bouton retour */
+.btn-retour {
+  background: none;
+  border: none;
+  color: #05090c;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.btn-retour:hover {
+  text-decoration: underline;
+}
+
+/* Titre et description */
+.visit-details h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #25384b;
+}
+.visit-details .desc {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  color: #270c0c;
+}
+
+/* Galerie d’images */
+/* Overlay masqué */
+/* Galerie “carousel” scrollable */
+.gallery {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch; /* inertie sur iOS */
+  gap: 12px;
+  margin-bottom: 25px;
+  padding-bottom: 10px; /* espace pour la scrollbar */
+}
+
+/* Masquer la scrollbar, mais la laisser utilisable */
+.gallery::-webkit-scrollbar {
+  height: 6px;
+}
+.gallery::-webkit-scrollbar-track {
+  background: transparent;
+}
+.gallery::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.2);
+  border-radius: 3px;
+}
+
+/* Chaque image devient un “snap point” */
+.gallery img {
+  flex: 0 0 auto;
+  width: 160px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 6px;
+  scroll-snap-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+
+/* Carte Google Maps */
+.map-container {
+  margin: 20px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.map-container iframe {
+  width: 100%;
+  height: 300px;
+  border: none;
+}
+
+/* Sections inclusions, options, itinéraire */
+.section-block {
+  background: #f7f9fc;
+  padding: 20px;
+  border-left: 5px solid #3498db;
+  border-radius: 6px;
+  margin-bottom: 25px;
+}
+.section-block h3 {
+  margin-bottom: 12px;
+  color: #3498db;
+  font-size: 1.3rem;
+}
+.section-block ul,
+.section-block ol {
+  padding-left: 20px;
+  color: #555;
+}
+.section-block li {
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+.option-line {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px dashed #ccc;
+  font-size: 1rem;
+}
+.option-line:last-child {
+  border-bottom: none;
+}
+
+/* Boutons d’action */
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+.buttons button {
+  flex: 1 1 200px;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.btn-reserver {
+  background: #27ae60;
+  color: #fff;
+}
+.btn-reserver:hover {
+  background: #219150;
+}
+.btn-panier {
+  background: #f39c12;
+  color: #fff;
+}
+.btn-panier:hover {
+  background: #d68910;
+}
+.btn-wishlist {
+  background: #e74c3c;
+  color: #fff;
+}
+.btn-wishlist:hover {
+  background: #c0392b;
+}
+
+/* Recommandations */
+.recommandations {
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+.recommandations h3 {
+  color: #2c3e50;
+  margin-bottom: 12px;
+}
+.recommandations ul {
+  list-style: disc;
+  padding-left: 20px;
+  color: #555;
+}
+.recommandations li {
+  margin-bottom: 8px;
+}

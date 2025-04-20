@@ -1,0 +1,133 @@
+.package-details {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #fff;
+    font-family: 'Segoe UI', sans-serif;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    line-height: 1.6;
+  }
+  
+  .package-details h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 2rem;
+  }
+  
+  .main-image {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+  }
+  
+  .main-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  }
+  
+  .desc {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 25px;
+    text-align: justify;
+    padding: 0 20px;
+    border-left: 5px solid #3498db;
+    padding-left: 15px;
+  }
+  
+  .info-block {
+    margin-bottom: 30px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #f7f7f7;
+  }
+  
+  .info-block h3 {
+    color: #3498db;
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 8px;
+  }
+  
+  .info-block ul,
+  .info-block ol {
+    color: #555;
+    padding-left: 25px;
+  }
+  
+  .info-block ul li,
+  .info-block ol li {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    position: relative;
+  }
+  
+  .info-block ul li:before,
+  .info-block ol li:before {
+    content: "✔";
+    color: #27ae60;
+    position: absolute;
+    left: -20px;
+    font-size: 1.5rem;
+    top: 0;
+  }
+  
+  .info-block ul li {
+    margin-left: 25px;
+  }
+  
+  .info-block ol li {
+    margin-left: 30px;
+  }
+  
+  .practical {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #f7f7f7;
+  }
+  
+  .practical p {
+    margin: 0;
+    font-size: 1rem;
+  }
+  
+  .practical p strong {
+    font-weight: bold;
+  }
+  
+  .reserve-btn {
+    display: block;
+    text-align: center;
+    margin: 30px auto 0;
+    padding: 12px 30px;
+    background: #27ae60;
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+    width: 250px;
+    margin-bottom: 30px;
+  }
+  
+  .reserve-btn:hover {
+    background: #219150;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-8px); }
+  }
+  

@@ -1,0 +1,89 @@
+.packages-page {
+    padding: 40px;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f9f9f9;
+  }
+  
+  .package-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+  }
+  
+  .package-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 15px;
+    text-align: center;
+    position: relative;
+  }
+  
+  .package-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.5s ease, box-shadow 0.5s ease; /* Transition fluide */
+    animation: float 4s ease-in-out infinite; /* Animation flottante */
+  }
+  
+  .package-card:hover img {
+    transform: scale(1.1) rotate(3deg); /* Effet de zoom et rotation */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2); /* Ombre accentuée */
+  }
+  
+  .package-card h3 {
+    margin: 15px 0 10px;
+    color: #2c3e50;
+  }
+  
+  .package-card p {
+    color: #555;
+    font-size: 15px;
+  }
+  
+  .price {
+    font-weight: bold;
+    color: #e67e22;
+    display: block;
+    margin: 10px 0;
+  }
+  
+  .options h4 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  
+  .options ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .options li {
+    color: #555;
+    font-size: 14px;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.3s;
+  }
+  
+  .btn:hover {
+    background: #2980b9;
+  }
+  
+  /* Animation flottante */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-8px); }
+  }
+  
