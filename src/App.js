@@ -18,6 +18,7 @@ import PackagesPage from './pages/PackagesPage';
 import PackageDetails from './pages/PackageDetails';
 import Contact from './pages/Contact';
 import ForgotPassword from './pages/ForgotPassword';
+import Transferts from './pages/Transferts'; 
 
 
 
@@ -36,6 +37,7 @@ const App = () => (
       <Route path="/package/:id" element={<PackageDetails />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/transferts" element={<Transferts />} />
       
        {/* Réservation accessible uniquement aux touriste */}
        <Route

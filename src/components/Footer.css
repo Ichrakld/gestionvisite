@@ -1,9 +1,8 @@
 .footer {
-    background-color: #ef8c35; /* Fond sombre pour le footer */
-    color: #fff; /* Texte blanc */
+    background-color: #b6b5b3; /* Fond sombre pour le footer */
+    color: #323131; /* Texte blanc */
     text-align: center; /* Centrer le texte */
-    padding: 20px; /* Espace intérieur */
-    position: fixed;
+    padding: 10px; /* Espace intérieur */
     bottom: 0;
     width: 100%;
     left: 0;
@@ -11,18 +10,18 @@
   }
   
   .footer-content {
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
   }
   
   .footer p {
     margin: 0;
     font-size: 14px;
-    color: #fff;
+    color: #0b0b0b;
   }
   
   .footer a {
-    color: #fff;
+    color: #151313;
     text-decoration: none;
   }
   
@@ -38,10 +37,10 @@
   .footer .social-icons a {
     margin: 0 15px;
     font-size: 20px;
-    color: #fff;
+    color: #f95705;
   }
   
   .footer .social-icons a:hover {
-    color: #f0a500; /* Couleur survol pour les icônes */
+    color: #fb5f0c; /* Couleur survol pour les icônes */
   }
   

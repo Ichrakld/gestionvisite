@@ -29,7 +29,7 @@ const Navbar = () => {
           <li><Link to="/visites" className="navbar-item">Visites</Link></li>
           <li><Link to="/excursions" className="navbar-item">Excursion</Link></li>
           <li><Link to="/Packages" className="navbar-item">Packages</Link></li>
-          <li><Link to="/" className="navbar-item">Transferts</Link></li>
+          <li><Link to="/Transferts" className="navbar-item">Transferts</Link></li>
           <li><Link to="/Contact" className="navbar-item">Contact</Link></li>
 
           {/* Affichage du rôle et bouton de connexion/déconnexion */}
