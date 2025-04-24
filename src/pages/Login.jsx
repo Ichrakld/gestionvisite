@@ -17,7 +17,8 @@ const Login = () => {
     try {
       await login(email, password);
       setSubmitted(true);
-      navigate('/visites'); // ou la page que tu veux
+      setError(null);
+      navigate('/visites'); // redirection après connexion
     } catch (err) {
       setError('Invalid email or password');
     }
@@ -26,8 +27,6 @@ const Login = () => {
   return (
     <div className="login-container">
       <h2>Sign In</h2>
-      <p>Access your account to view bookings or manage your wishlist.</p>
-
       <form onSubmit={handleSubmit} className="login-form">
         {error && <p className="error-msg">{error}</p>}
 
@@ -38,7 +37,6 @@ const Login = () => {
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
           />
         </label>
 
@@ -49,18 +47,15 @@ const Login = () => {
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter your password"
           />
         </label>
 
         <button type="submit">Login</button>
-
         {submitted && <p className="login-success">✅ Login successful!</p>}
       </form>
 
       <div className="login-extra">
         <p>Don't have an account? <Link to="/subscribe">Create one here</Link>.</p>
-        <p><Link to="/forgot-password">Forgot your password?</Link></p>
       </div>
     </div>
   );

@@ -87,5 +87,32 @@
     .modal {
       width: 90%;
     }
-  }
+  } 
+  /* Navbar.css */
+
+/* ... tes règles existantes ... */
+
+.cart-link {
+  position: relative;
+  display: inline-block;
+}
+
+.cart-link img {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+}
+
+.cart-link .badge {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background: #e74c3c;
+  color: #fff;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.7rem;
+  line-height: 1;
+}
+
   

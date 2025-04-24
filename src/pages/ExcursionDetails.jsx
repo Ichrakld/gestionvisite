@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext'; // 👈 Assurez-vous que ce chemin est correct
 import './ExcursionDetails.css';
 
 import essaouiraImg from '../assets/essaouira1.jpg';
@@ -13,7 +14,7 @@ const detailsData = {
     image: essaouiraImg,
     price: 105,
     description:
-      "Partez pour une journée à Essaouira, ville côtière au charme unique. Visite de la médina, du port, temps libre sur la plage et dégustation de fruits de mer.",
+      "Partez pour une journée à Essaouira, ville côtière au charme unique...",
     included: [
       "Transport aller-retour en minibus climatisé",
       "Guide professionnel francophone",
@@ -26,7 +27,7 @@ const detailsData = {
     itinerary: [
       "08:00 – Départ de Marrakech",
       "10:30 – Arrivée à Essaouira",
-      "11:00 – Visite guidée de la médina et du port",
+      "11:00 – Visite guidée...",
       "13:00 – Déjeuner (optionnel)",
       "14:30 – Temps libre / shopping",
       "16:00 – Retour vers Marrakech",
@@ -42,8 +43,7 @@ const detailsData = {
     title: "Cascades d’Ouzoud",
     image: ouzoudImg,
     price: 89,
-    description:
-      "Explorez les plus hautes chutes d'eau du Maroc à Ouzoud. Randonnée, baignade possible et déjeuner traditionnel au bord de la rivière.",
+    description: "Explorez les plus hautes chutes d'eau du Maroc à Ouzoud...",
     included: [
       "Transport en minibus climatisé",
       "Guide local",
@@ -55,11 +55,11 @@ const detailsData = {
     ],
     itinerary: [
       "09:00 – Départ de Marrakech",
-      "11:30 – Arrivée aux cascades d’Ouzoud",
-      "12:00 – Randonnée et visite",
-      "13:30 – Déjeuner en terrasse",
-      "15:00 – Balade en bateau (option)",
-      "17:00 – Retour à Marrakech",
+      "11:30 – Arrivée aux cascades",
+      "12:00 – Randonnée",
+      "13:30 – Déjeuner",
+      "15:00 – Balade en bateau",
+      "17:00 – Retour",
       "19:30 – Arrivée"
     ],
     duration: "10h30",
@@ -72,8 +72,7 @@ const detailsData = {
     title: "Vallée de l’Ourika",
     image: ourikaImg,
     price: 75,
-    description:
-      "Vivez une escapade nature dans la vallée de l’Ourika, au pied de l’Atlas. Découverte de villages berbères et des bergeries traditionnelles.",
+    description: "Vivez une escapade nature dans la vallée de l’Ourika...",
     included: [
       "Transport A/R",
       "Guide local",
@@ -84,12 +83,12 @@ const detailsData = {
       { name: "Thé chez l’habitant", adult: 12, child: 8 }
     ],
     itinerary: [
-      "09:00 – Départ de Marrakech",
-      "10:00 – Arrivée dans la vallée",
-      "10:30 – Visite d’un village berbère",
-      "12:00 – Déjeuner traditionnel (optionnel)",
-      "13:30 – Balade au bord de la rivière",
-      "15:00 – Retour à Marrakech",
+      "09:00 – Départ",
+      "10:00 – Arrivée",
+      "10:30 – Visite",
+      "12:00 – Déjeuner",
+      "13:30 – Balade",
+      "15:00 – Retour",
       "16:00 – Arrivée"
     ],
     duration: "7h",
@@ -102,8 +101,7 @@ const detailsData = {
     title: "Désert d’Agafay",
     image: agafayImg,
     price: 130,
-    description:
-      "Découvrez le désert d’Agafay pour un dîner sous les étoiles, balade en 4×4 et spectacle traditionnel autour du feu.",
+    description: "Découvrez le désert d’Agafay pour un dîner sous les étoiles...",
     included: [
       "4×4 privé",
       "Dîner traditionnel",
@@ -114,12 +112,12 @@ const detailsData = {
       { name: "Coucher de soleil VIP", adult: 30, child: 20 }
     ],
     itinerary: [
-      "14:00 – Départ en 4×4 depuis Marrakech",
-      "15:00 – Arrivée dans le désert d’Agafay",
-      "16:00 – Balade en dromadaire (option)",
+      "14:00 – Départ",
+      "15:00 – Arrivée",
+      "16:00 – Balade",
       "17:30 – Coucher de soleil",
-      "18:30 – Dîner et spectacle",
-      "20:30 – Retour à Marrakech",
+      "18:30 – Dîner",
+      "20:30 – Retour",
       "22:00 – Arrivée"
     ],
     duration: "8h",
@@ -133,8 +131,19 @@ const detailsData = {
 const ExcursionDetails = () => {
   const { id } = useParams();
   const data = detailsData[id];
+  const { addToCart } = useCart(); // 👈 Hook panier
 
   if (!data) return <p>Excursion non trouvée.</p>;
+
+  const handleAddToCart = () => {
+    addToCart({
+      id,
+      title: data.title,
+      price: data.price,
+      image: data.image,
+      type: 'excursion'
+    });
+  };
 
   return (
     <div className="excursion-details">
@@ -174,6 +183,10 @@ const ExcursionDetails = () => {
         <p><strong>Participants max :</strong> {data.maxPeople}</p>
         <p><strong>Prix :</strong> {data.price.toFixed(2)} €</p>
       </div>
+
+      <button onClick={handleAddToCart} className="add-to-cart-btn">
+        Ajouter au panier
+      </button>
 
       <Link to={`/reservation/${id}`} className="reserve-btn">
         Réserver maintenant

@@ -1,11 +1,14 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import './PackageDetails.css';
+import { useCart } from '../context/CartContext';
 
 import luxeImg     from '../assets/package-luxe.jpg';
 import aventureImg from '../assets/package-aventure.jpg';
 import familleImg  from '../assets/package-famille.jpg';
 import plageImg    from '../assets/package-plage.jpg';
+
+
 
 const packageData = {
   1: {
@@ -115,8 +118,21 @@ const packageData = {
 const PackageDetails = () => {
   const { id } = useParams();
   const pkg = packageData[id];
+  const { addToCart } = useCart(); // Hook personnalisé
 
   if (!pkg) return <p>Package non trouvé.</p>;
+
+  const handleAddToCart = () => {
+    const item = {
+      id,
+      title: pkg.title,
+      image: pkg.image,
+      price: pkg.price,
+      quantity: 1,
+      type: 'package'
+    };
+    addToCart(item);
+  };
 
   return (
     <div className="package-details">
@@ -155,9 +171,15 @@ const PackageDetails = () => {
         <p><strong>Prix :</strong> {pkg.price.toFixed(2)} €</p>
       </div>
 
-      <Link to={`/reservation/${id}`} className="reserve-btn">
-        Réserver ce pack
-      </Link>
+      <div className="actions">
+        <button className="add-to-cart-btn" onClick={handleAddToCart}>
+          Ajouter au panier
+        </button>
+
+        <Link to={`/reservation/${id}`} className="reserve-btn">
+          Réserver ce pack
+        </Link>
+      </div>
     </div>
   );
 };

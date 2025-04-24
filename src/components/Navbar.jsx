@@ -1,18 +1,21 @@
+// src/components/Navbar.jsx
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 import logo from '../assets/log.jpg';
 import ReactModal from 'react-modal';
-import { useAuth } from '../context/AuthContext'; // 👉 IMPORT CONTEXTE
+import { useAuth } from '../context/AuthContext';
+import { useCart } from '../context/CartContext';
+import cartIcon from '../assets/cart.png';
 
 const Navbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { user, logout } = useAuth(); // 👉 Récupérer le user et logout
+  const { user, logout } = useAuth();
+  const { cartItems } = useCart();
   const navigate = useNavigate();
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
-
   const handleLogout = () => {
     logout();
     navigate('/login');
@@ -27,27 +30,37 @@ const Navbar = () => {
         <ul className="navbar-links">
           <li><Link to="/" className="navbar-item">Accueil</Link></li>
           <li><Link to="/visites" className="navbar-item">Visites</Link></li>
-          <li><Link to="/excursions" className="navbar-item">Excursion</Link></li>
-          <li><Link to="/Packages" className="navbar-item">Packages</Link></li>
-          <li><Link to="/Transferts" className="navbar-item">Transferts</Link></li>
-          <li><Link to="/Contact" className="navbar-item">Contact</Link></li>
+          <li><Link to="/excursions" className="navbar-item">Excursions</Link></li>
+          <li><Link to="/packages" className="navbar-item">Packages</Link></li>
+          <li><Link to="/transferts" className="navbar-item">Transferts</Link></li>
+          <li><Link to="/contact" className="navbar-item">Contact</Link></li>
 
-          {/* Affichage du rôle et bouton de connexion/déconnexion */}
           {user ? (
             <>
               <li><Link to="/profile" className="navbar-item">Profil</Link></li>
-              <li><button onClick={handleLogout} className="navbar-item logout-button">Déconnexion</button></li>
+              <li>
+                <Link to="/cart" className="navbar-item cart-link">
+                  <img src={cartIcon} alt="Panier" />
+                  {cartItems.length > 0 && (
+                    <span className="badge">{cartItems.length}</span>
+                  )}
+                </Link>
+              </li>
+              <li>
+                <button onClick={handleLogout} className="navbar-item logout-button">
+                  Déconnexion
+                </button>
+              </li>
             </>
           ) : (
             <>
               <li><Link to="/login" className="navbar-item">Se connecter</Link></li>
-              <li><Link to="/Subscribe" className="navbar-item">Inscription</Link></li>
+              <li><Link to="/subscribe" className="navbar-item">Inscription</Link></li>
             </>
           )}
         </ul>
       </div>
 
-      {/* Modal de la vidéo */}
       <ReactModal
         isOpen={isModalOpen}
         onRequestClose={closeModal}
@@ -63,7 +76,8 @@ const Navbar = () => {
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
-        ></iframe>
+          title="Vidéo Maroc"
+        />
       </ReactModal>
     </nav>
   );

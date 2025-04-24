@@ -19,8 +19,10 @@ import PackageDetails from './pages/PackageDetails';
 import Contact from './pages/Contact';
 import ForgotPassword from './pages/ForgotPassword';
 import Transferts from './pages/Transferts'; 
-
-
+import CartPage from './pages/CartPage';
+import AdminProfile from './pages/Profile/AdminProfile';
+import GuideProfile from './pages/Profile/GuideProfile';
+import TouristProfile from './pages/Profile/TouristProfile';
 
 const App = () => (
   <>
@@ -38,16 +40,22 @@ const App = () => (
       <Route path="/contact" element={<Contact />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/transferts" element={<Transferts />} />
+      <Route path="/cart" element={<CartPage />} />
+      <Route path="/cart/:id" element={<CartPage />} />
       
-       {/* Réservation accessible uniquement aux touriste */}
-       <Route
+      {/* Ajout des profils dans les routes */}
+      <Route path="/admin" element={<AdminProfile />} />
+      <Route path="/guide" element={<GuideProfile />} />
+      <Route path="/tourist" element={<TouristProfile />} />
+      
+      {/* Réservation accessible uniquement aux touristes */}
+      <Route
         path="/reservation/:id"
         element={
           <RoleRoute allowedRoles={["touriste"]}>
             <Reservation />
           </RoleRoute>
         }
-         
       />
 
       {/* Profil accessible uniquement aux utilisateurs authentifiés */}
@@ -65,7 +73,7 @@ const App = () => (
         path="/admin/*"
         element={
           <RoleRoute allowedRoles={["admin"]}>
-            {/* ajouter ici routes AdminDashboard, UsersManagement, etc. */}
+            {/* Ajouter ici les routes spécifiques à l'admin, par exemple : AdminDashboard */}
           </RoleRoute>
         }
       />

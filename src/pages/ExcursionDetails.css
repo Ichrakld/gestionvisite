@@ -68,4 +68,18 @@
   .reserve-btn:hover {
     background: #d35400;
   }
+  .add-to-cart-btn {
+    background-color: #ff6e40;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    margin-right: 10px;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: bold;
+  }
+  
+  .add-to-cart-btn:hover {
+    background-color: #ff3d00;
+  }
   
